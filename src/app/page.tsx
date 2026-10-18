@@ -1,287 +1,242 @@
 
-"use client";
-
 import Link from "next/link";
 
-const subjects = [
-  { icon: "ع", name: "اللغة العربية", desc: "قراءة ونحو وتعبير", value: "arabic", color: "peach" },
-  { icon: "EN", name: "اللغة الإنجليزية", desc: "لغة ومحادثة وقواعد", value: "english", color: "blue" },
-  { icon: "∑", name: "الرياضيات", desc: "فهم المسائل والتدريب", value: "math", color: "purple" },
-  { icon: "⚗", name: "العلوم", desc: "اكتشف وافهم العالم", value: "science", color: "green" },
-  { icon: "◈", name: "الدراسات الاجتماعية", desc: "تاريخ وجغرافيا", value: "social-studies", color: "yellow" },
-  { icon: "⌘", name: "البرمجة", desc: "مهارات المستقبل الرقمية", value: "programming", color: "pink" },
-  { icon: "۞", name: "القرآن الكريم", desc: "حفظ وتلاوة وتجويد", value: "quran", color: "mint" },
-];
-
-const steps = [
-  { number: "01", icon: "⌕", title: "ابحث عن معلمك", desc: "اختر المادة والمرحلة الدراسية التي تناسب احتياجك." },
-  { number: "02", icon: "▤", title: "قارن واختَر", desc: "راجع ملف المعلم وتخصصه وسعره قبل اتخاذ القرار." },
-  { number: "03", icon: "✓", title: "ابدأ رحلتك", desc: "استخدم حسابك لمتابعة حجوزاتك وخدماتك المتاحة." },
+const features = [
+  {
+    number: "01",
+    title: "معلمون متخصصون",
+    description:
+      "تعرّف على المعلمين واختر الأنسب لاحتياجاتك التعليمية.",
+  },
+  {
+    number: "02",
+    title: "تعلم يناسبك",
+    description:
+      "اختر المرحلة الدراسية والمواد التي تحتاج إلى دعم فيها.",
+  },
+  {
+    number: "03",
+    title: "متابعة تعليمية",
+    description:
+      "احصل على المساعدة في تنظيم احتياجاتك ومتابعة تقدمك.",
+  },
 ];
 
 export default function HomePage() {
   return (
-    <main dir="rtl" className="home-page">
-      <header className="home-header">
-        <div className="home-container header-inner">
-          <Link href="/" className="home-brand" aria-label="مُعلّم - الصفحة الرئيسية">
-            <span className="brand-symbol">م</span>
-            <span className="brand-copy">
-              <strong>مُعلّم</strong>
-              <small>تعلّم على مقاسك</small>
-            </span>
+    <main
+      dir="rtl"
+      className="min-h-screen bg-slate-50 text-slate-900"
+    >
+      {/* شريط التنقل */}
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4">
+          <Link
+            href="/"
+            className="text-2xl font-black text-violet-800"
+          >
+            مُعلّم
+            <span className="text-emerald-600">.</span>
           </Link>
 
-          <nav className="home-nav" aria-label="القائمة الرئيسية">
-            <Link href="/teachers">اكتشف المعلمين</Link>
-            <a href="#subjects">المواد الدراسية</a>
-            <a href="#how">كيف تعمل المنصة؟</a>
+          <nav className="flex flex-wrap items-center gap-4 text-sm font-semibold text-slate-700 sm:gap-6">
+            <Link href="/#home" className="hover:text-violet-700">
+              الرئيسية
+            </Link>
+            <Link href="/#how" className="hover:text-violet-700">
+              كيف تعمل المنصة؟
+            </Link>
+            <Link href="/teachers" className="hover:text-violet-700">
+              المعلمون
+            </Link>
+            <Link
+              href="/parent-request"
+              className="hover:text-violet-700"
+            >
+              المستشار التعليمي
+            </Link>
           </nav>
 
-          <div className="header-ctas">
-            <Link href="/login" className="login-cta">تسجيل الدخول</Link>
-            <Link href="/register" className="primary-cta">ابدأ الآن <span>←</span></Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/login"
+              className="rounded-xl border border-violet-200 px-4 py-2.5 font-bold text-violet-800 transition hover:bg-violet-50"
+            >
+              تسجيل الدخول
+            </Link>
+            <Link
+              href="/register"
+              className="rounded-xl bg-violet-700 px-4 py-2.5 font-bold text-white transition hover:bg-violet-800"
+            >
+              إنشاء حساب
+            </Link>
           </div>
         </div>
       </header>
 
-      <section className="home-hero">
-        <div className="hero-decoration hero-decoration-one" aria-hidden="true" />
-        <div className="hero-decoration hero-decoration-two" aria-hidden="true" />
+      {/* القسم الرئيسي */}
+      <section id="home" className="overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 md:grid-cols-2 md:py-28">
+          <div>
+            <span className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-bold text-violet-800">
+              تعلّم على مقاسك
+            </span>
 
-        <div className="home-container hero-layout">
-          <div className="hero-content">
-            <div className="hero-kicker">
-              <span className="kicker-dot" />
-              طريقك إلى تعلّم أفضل يبدأ هنا
-            </div>
-
-            <h1>
-              كل طالب له طريقته.
-              <br />
-              <span>اعثر على معلمك المناسب.</span>
+            <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              رحلتك التعليمية
+              <span className="block text-violet-700">
+                تبدأ من هنا
+              </span>
             </h1>
 
-            <p className="hero-lead">
-              اكتشف معلمين في تخصصات مختلفة، وقارن بين ملفاتهم
-              واختر ما يناسب مرحلتك واحتياجاتك التعليمية.
+            <p className="mt-6 max-w-xl text-lg leading-9 text-slate-600">
+              اكتشف المعلمين المناسبين لك، واختر المواد والمرحلة
+              الدراسية التي تحتاج إليها، وابدأ رحلة تعلم تناسب
+              أهدافك واحتياجاتك.
             </p>
 
-            <div className="hero-actions">
-              <Link href="/teachers" className="hero-primary">
-                اكتشف المعلمين <span>←</span>
-              </Link>
-              <a href="#how" className="hero-secondary">
-                كيف تعمل المنصة؟ <span>⌄</span>
-              </a>
-            </div>
-
-            <div className="hero-benefits">
-              <span><b>✓</b> تخصصات متنوعة</span>
-              <span><b>✓</b> اختر وفق احتياجك</span>
-              <span><b>✓</b> تعلّم أونلاين</span>
-            </div>
-          </div>
-
-          <div className="hero-visual" aria-label="رحلتك التعليمية تبدأ من هنا">
-            <div className="visual-orbit orbit-one" />
-            <div className="visual-orbit orbit-two" />
-
-            <div className="visual-sticker sticker-star">✳</div>
-            <div className="visual-sticker sticker-spark">✦</div>
-
-            <div className="learning-board">
-              <div className="board-top">
-                <div>
-                  <span className="board-eyebrow">مساحتك التعليمية</span>
-                  <h2>تعلّم بثقة 🌱</h2>
-                </div>
-                <div className="board-logo">م</div>
-              </div>
-
-              <div className="board-illustration">
-                <div className="illustration-sun" />
-                <div className="illustration-book book-back" />
-                <div className="illustration-book book-front">
-                  <span>مُعلّم</span>
-                  <i>✦</i>
-                </div>
-                <div className="illustration-pencil">✎</div>
-                <div className="illustration-star">✳</div>
-              </div>
-
-              <div className="board-bottom">
-                <span className="board-check">✓</span>
-                <div>
-                  <strong>خطوتك الأولى تبدأ الآن</strong>
-                  <small>ابحث، قارن، ثم اختر</small>
-                </div>
-                <span className="board-arrow">↙</span>
-              </div>
-            </div>
-
-            <div className="floating-card floating-subject">
-              <span className="floating-icon floating-purple">∑</span>
-              <span><strong>مواد متنوعة</strong><small>تعلّم ما تحب</small></span>
-            </div>
-
-            <div className="floating-card floating-learning">
-              <span className="floating-icon floating-green">✓</span>
-              <span><strong>اختيارك بوضوح</strong><small>قارن قبل الحجز</small></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="home-container search-wrap">
-          <form className="teacher-search" action="/teachers" method="get">
-            <div className="search-intro">
-              <span className="search-symbol">⌕</span>
-              <span><strong>ابحث عن معلمك</strong><small>ابدأ بالمادة والمرحلة الدراسية</small></span>
-            </div>
-
-            <label className="search-field">
-              <span>المادة الدراسية</span>
-              <select name="subject" defaultValue="">
-                <option value="">كل المواد</option>
-                <option value="arabic">اللغة العربية</option>
-                <option value="english">اللغة الإنجليزية</option>
-                <option value="math">الرياضيات</option>
-                <option value="science">العلوم</option>
-                <option value="social-studies">الدراسات الاجتماعية</option>
-                <option value="quran">القرآن الكريم والتجويد</option>
-                <option value="programming">البرمجة</option>
-              </select>
-            </label>
-
-            <label className="search-field">
-              <span>المرحلة الدراسية</span>
-              <select name="stage" defaultValue="all">
-                <option value="all">كل المراحل</option>
-                <option value="kindergarten">رياض الأطفال</option>
-                <option value="primary">ابتدائي</option>
-                <option value="preparatory">إعدادي</option>
-                <option value="secondary">ثانوي</option>
-                <option value="university">جامعي</option>
-              </select>
-            </label>
-
-            <button className="search-submit" type="submit">
-              ابحث الآن <span>←</span>
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <section className="subject-section" id="subjects">
-        <div className="home-container">
-          <div className="section-head">
-            <div>
-              <span className="section-eyebrow"><i /> اكتشف عالم المعرفة</span>
-              <h2>ماذا تريد أن <span>تتعلّم اليوم؟</span></h2>
-              <p>اختر مادتك المفضلة، وابدأ في استكشاف المعلمين المتخصصين.</p>
-            </div>
-            <Link className="text-link" href="/teachers">كل المعلمين <span>←</span></Link>
-          </div>
-
-          <div className="subject-grid">
-            {subjects.map((subject) => (
+            <div className="mt-9 flex flex-wrap gap-4">
               <Link
-                className="subject-card"
-                href={`/teachers?subject=${subject.value}`}
-                key={subject.value}
+                href="/teachers"
+                className="rounded-2xl bg-violet-700 px-7 py-4 font-extrabold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:bg-violet-800"
               >
-                <span className={`subject-icon ${subject.color}`}>{subject.icon}</span>
-                <span className="subject-name">{subject.name}</span>
-                <span className="subject-desc">{subject.desc}</span>
-                <span className="subject-card-bottom">
-                  <span>اكتشف المعلمين</span><b>↙</b>
-                </span>
+                استكشف المعلمين
               </Link>
-            ))}
+
+              <Link
+                href="/parent-request"
+                className="rounded-2xl border-2 border-violet-200 bg-white px-7 py-4 font-extrabold text-violet-800 transition hover:border-violet-400 hover:bg-violet-50"
+              >
+                تواصل مع مستشارك التعليمي
+              </Link>
+            </div>
+
+            <p className="mt-5 text-sm leading-7 text-slate-500">
+              هل تحتاج إلى مساعدة في تحديد احتياجاتك التعليمية؟
+              أرسل طلبك إلى المستشار التعليمي.
+            </p>
           </div>
 
-          <div className="subjects-note">
-            <span>💡</span>
-            <p>لم تحدد المادة بعد؟ تصفّح المعلمين واكتشف الخيارات المتاحة لك.</p>
-            <Link href="/teachers">تصفّح الكل ←</Link>
+          <div className="relative">
+            <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-emerald-200/60 blur-2xl" />
+            <div className="absolute -bottom-6 -left-6 h-40 w-40 rounded-full bg-violet-300/50 blur-2xl" />
+
+            <div className="relative rounded-[2rem] border border-white bg-white p-6 shadow-2xl shadow-violet-100 sm:p-9">
+              <div className="rounded-3xl bg-gradient-to-br from-violet-700 to-indigo-900 p-8 text-white sm:p-10">
+                <div className="text-5xl">📚</div>
+                <h2 className="mt-7 text-3xl font-black leading-relaxed">
+                  كل طالب يستحق
+                  <br />
+                  تجربة تعلم أفضل
+                </h2>
+                <p className="mt-4 leading-8 text-violet-100">
+                  تعلّم، تطوّر، وحقق أهدافك خطوة بخطوة مع
+                  مُعلّم.
+                </p>
+              </div>
+
+              <div className="mt-5 grid grid-cols-3 gap-3">
+                <div className="rounded-2xl bg-violet-50 p-4 text-center">
+                  <div className="text-2xl">🎯</div>
+                  <p className="mt-2 text-xs font-bold text-violet-900">
+                    أهداف واضحة
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-emerald-50 p-4 text-center">
+                  <div className="text-2xl">📖</div>
+                  <p className="mt-2 text-xs font-bold text-emerald-900">
+                    تعلم مستمر
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-amber-50 p-4 text-center">
+                  <div className="text-2xl">🌟</div>
+                  <p className="mt-2 text-xs font-bold text-amber-900">
+                    تقدم أفضل
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="how-section" id="how">
-        <div className="home-container">
-          <div className="centered-head">
-            <span className="section-eyebrow"><i /> رحلة سهلة من البداية</span>
-            <h2>التعلّم المناسب يبدأ <span>بخطوة بسيطة</span></h2>
-            <p>ثلاث خطوات تساعدك على الوصول إلى اختيارك.</p>
+      {/* كيف تعمل المنصة؟ */}
+      <section id="how" className="border-y border-slate-200 bg-white py-20">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="font-bold text-violet-700">
+              خطوات بسيطة
+            </span>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+              كيف تساعدك مُعلّم؟
+            </h2>
+            <p className="mt-4 leading-8 text-slate-600">
+              ابدأ بتحديد احتياجاتك، ثم استكشف الخيارات المتاحة
+              لك على المنصة.
+            </p>
           </div>
 
-          <div className="steps-grid">
-            {steps.map((step) => (
-              <article className="step-card" key={step.number}>
-                <div className="step-card-top">
-                  <span className="step-icon">{step.icon}</span>
-                  <span className="step-number">{step.number}</span>
-                </div>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {features.map((feature) => (
+              <article
+                key={feature.number}
+                className="rounded-3xl border border-slate-200 bg-slate-50 p-7 transition hover:-translate-y-1 hover:border-violet-200 hover:shadow-lg"
+              >
+                <span className="text-sm font-black text-violet-600">
+                  {feature.number}
+                </span>
+                <h3 className="mt-4 text-xl font-extrabold">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 leading-8 text-slate-600">
+                  {feature.description}
+                </p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="join-section">
-        <div className="home-container">
-          <div className="join-panel">
-            <div className="join-decoration" aria-hidden="true">✳</div>
-            <div className="join-content">
-              <span className="join-eyebrow">للمعلمين والمعلمات</span>
-              <h2>علّم ما تحب، وشارك خبرتك مع الآخرين.</h2>
-              <p>أنشئ حسابك التعليمي، وقدّم خبراتك وتخصصاتك للطلاب الباحثين عن معلم مناسب.</p>
-              <Link href="/register?role=teacher" className="join-cta">
-                انضم إلى مُعلّم <span>←</span>
-              </Link>
-            </div>
-            <div className="join-art" aria-hidden="true">
-              <div className="join-art-circle"><span>م</span></div>
-              <span className="join-art-star">✦</span>
-              <span className="join-art-dot" />
-            </div>
+      {/* قسم المستشار التعليمي */}
+      <section className="bg-violet-50 py-16">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 px-5 md:flex-row md:items-center">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-black leading-relaxed">
+              هل تبحث عن المسار التعليمي المناسب؟
+            </h2>
+            <p className="mt-3 leading-8 text-slate-600">
+              أخبرنا ببلدك والمرحلة الدراسية والمواد المطلوبة،
+              وسجّل طلبك للتواصل مع المستشار التعليمي.
+            </p>
           </div>
+
+          <Link
+            href="/parent-request"
+            className="shrink-0 rounded-2xl bg-violet-700 px-7 py-4 font-extrabold text-white shadow-lg shadow-violet-200 transition hover:bg-violet-800"
+          >
+            تواصل مع مستشارك التعليمي
+          </Link>
         </div>
       </section>
 
-      <footer className="home-footer">
-        <div className="home-container">
-          <div className="footer-main">
-            <div className="footer-about">
-              <Link href="/" className="home-brand footer-brand">
-                <span className="brand-symbol">م</span>
-                <span className="brand-copy"><strong>مُعلّم</strong><small>تعلّم على مقاسك</small></span>
-              </Link>
-              <p>مساحة تجمع الطلاب والمعلمين لتجربة تعليمية أكثر وضوحًا ومرونة.</p>
-            </div>
+      {/* تذييل الصفحة */}
+      <footer className="bg-slate-950 py-8 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:text-right">
+          <Link href="/" className="text-xl font-black">
+            مُعلّم.
+          </Link>
 
-            <div className="footer-column">
-              <strong>استكشف</strong>
-              <Link href="/teachers">المعلمون</Link>
-              <a href="#subjects">المواد الدراسية</a>
-              <a href="#how">كيف تعمل المنصة؟</a>
-            </div>
+          <p className="text-sm leading-7 text-slate-400">
+            منصة تعليمية تساعد الطلاب على الوصول إلى تجربة تعلم
+            تناسب احتياجاتهم.
+          </p>
 
-            <div className="footer-column">
-              <strong>حسابك</strong>
-              <Link href="/login">تسجيل الدخول</Link>
-              <Link href="/register">إنشاء حساب</Link>
-              <Link href="/register?role=teacher">انضم كمعلم</Link>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} مُعلّم. جميع الحقوق محفوظة.</span>
-            <span>تعلّم على مقاسك، خطوة بخطوة <b>♥</b></span>
-          </div>
+          <Link
+            href="/parent-request"
+            className="text-sm font-bold text-violet-300 hover:text-white"
+          >
+            تواصل مع المستشار التعليمي
+          </Link>
         </div>
       </footer>
     </main>
