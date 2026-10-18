@@ -36,16 +36,19 @@ export default function HomePage() {
             <Link href="/teachers">اكتشف المعلمين</Link>
             <a href="#subjects">المواد الدراسية</a>
             <a href="#how">كيف تعمل المنصة؟</a>
+            <Link href="/parent-request">المستشار التعليمي</Link>
           </nav>
 
           <div className="header-ctas">
             <Link href="/login" className="login-cta">تسجيل الدخول</Link>
-            <Link href="/register" className="primary-cta">ابدأ الآن <span>←</span></Link>
+            <Link href="/register" className="primary-cta">
+              ابدأ الآن <span>←</span>
+            </Link>
           </div>
         </div>
       </header>
 
-      <section className="home-hero">
+      <section className="home-hero" id="home">
         <div className="hero-decoration hero-decoration-one" aria-hidden="true" />
         <div className="hero-decoration hero-decoration-two" aria-hidden="true" />
 
@@ -70,6 +73,9 @@ export default function HomePage() {
             <div className="hero-actions">
               <Link href="/teachers" className="hero-primary">
                 اكتشف المعلمين <span>←</span>
+              </Link>
+              <Link href="/parent-request" className="hero-secondary">
+                تواصل مع المستشار التعليمي <span>←</span>
               </Link>
               <a href="#how" className="hero-secondary">
                 كيف تعمل المنصة؟ <span>⌄</span>
@@ -122,12 +128,18 @@ export default function HomePage() {
 
             <div className="floating-card floating-subject">
               <span className="floating-icon floating-purple">∑</span>
-              <span><strong>مواد متنوعة</strong><small>تعلّم ما تحب</small></span>
+              <span>
+                <strong>مواد متنوعة</strong>
+                <small>تعلّم ما تحب</small>
+              </span>
             </div>
 
             <div className="floating-card floating-learning">
               <span className="floating-icon floating-green">✓</span>
-              <span><strong>اختيارك بوضوح</strong><small>قارن قبل الحجز</small></span>
+              <span>
+                <strong>اختيارك بوضوح</strong>
+                <small>قارن قبل الحجز</small>
+              </span>
             </div>
           </div>
         </div>
@@ -136,7 +148,10 @@ export default function HomePage() {
           <form className="teacher-search" action="/teachers" method="get">
             <div className="search-intro">
               <span className="search-symbol">⌕</span>
-              <span><strong>ابحث عن معلمك</strong><small>ابدأ بالمادة والمرحلة الدراسية</small></span>
+              <span>
+                <strong>ابحث عن معلمك</strong>
+                <small>ابدأ بالمادة والمرحلة الدراسية</small>
+              </span>
             </div>
 
             <label className="search-field">
@@ -180,7 +195,9 @@ export default function HomePage() {
               <h2>ماذا تريد أن <span>تتعلّم اليوم؟</span></h2>
               <p>اختر مادتك المفضلة، وابدأ في استكشاف المعلمين المتخصصين.</p>
             </div>
-            <Link className="text-link" href="/teachers">كل المعلمين <span>←</span></Link>
+            <Link className="text-link" href="/teachers">
+              كل المعلمين <span>←</span>
+            </Link>
           </div>
 
           <div className="subject-grid">
@@ -194,7 +211,8 @@ export default function HomePage() {
                 <span className="subject-name">{subject.name}</span>
                 <span className="subject-desc">{subject.desc}</span>
                 <span className="subject-card-bottom">
-                  <span>اكتشف المعلمين</span><b>↙</b>
+                  <span>اكتشف المعلمين</span>
+                  <b>↙</b>
                 </span>
               </Link>
             ))}
@@ -238,7 +256,10 @@ export default function HomePage() {
             <div className="join-content">
               <span className="join-eyebrow">للمعلمين والمعلمات</span>
               <h2>علّم ما تحب، وشارك خبرتك مع الآخرين.</h2>
-              <p>أنشئ حسابك التعليمي، وقدّم خبراتك وتخصصاتك للطلاب الباحثين عن معلم مناسب.</p>
+              <p>
+                أنشئ حسابك التعليمي، وقدّم خبراتك وتخصصاتك للطلاب
+                الباحثين عن معلم مناسب.
+              </p>
               <Link href="/register?role=teacher" className="join-cta">
                 انضم إلى مُعلّم <span>←</span>
               </Link>
@@ -252,15 +273,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="consultant-section">
+        <div className="home-container">
+          <div className="consultant-panel">
+            <div className="consultant-icon" aria-hidden="true">✦</div>
+            <div className="consultant-content">
+              <span className="section-eyebrow">نحن هنا لمساعدتك</span>
+              <h2>هل تحتاج إلى مساعدة في اختيار المسار التعليمي؟</h2>
+              <p>
+                أخبرنا ببلدك والمرحلة الدراسية والمواد التي تحتاج إليها،
+                وأرسل طلبك عبر نموذج المستشار التعليمي.
+              </p>
+            </div>
+            <Link href="/parent-request" className="consultant-cta">
+              تواصل مع المستشار التعليمي <span>←</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <footer className="home-footer">
         <div className="home-container">
           <div className="footer-main">
             <div className="footer-about">
               <Link href="/" className="home-brand footer-brand">
                 <span className="brand-symbol">م</span>
-                <span className="brand-copy"><strong>مُعلّم</strong><small>تعلّم على مقاسك</small></span>
+                <span className="brand-copy">
+                  <strong>مُعلّم</strong>
+                  <small>تعلّم على مقاسك</small>
+                </span>
               </Link>
-              <p>مساحة تجمع الطلاب والمعلمين لتجربة تعليمية أكثر وضوحًا ومرونة.</p>
+              <p>
+                مساحة تجمع الطلاب والمعلمين لتجربة تعليمية أكثر وضوحًا ومرونة.
+              </p>
             </div>
 
             <div className="footer-column">
@@ -268,6 +313,7 @@ export default function HomePage() {
               <Link href="/teachers">المعلمون</Link>
               <a href="#subjects">المواد الدراسية</a>
               <a href="#how">كيف تعمل المنصة؟</a>
+              <Link href="/parent-request">المستشار التعليمي</Link>
             </div>
 
             <div className="footer-column">
@@ -275,6 +321,7 @@ export default function HomePage() {
               <Link href="/login">تسجيل الدخول</Link>
               <Link href="/register">إنشاء حساب</Link>
               <Link href="/register?role=teacher">انضم كمعلم</Link>
+              <Link href="/parent-request">تواصل معنا</Link>
             </div>
           </div>
 
