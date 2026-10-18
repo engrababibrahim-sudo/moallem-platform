@@ -1,4 +1,4 @@
-json
+
 {
   "name": "moallem-platform",
   "version": "1.0.0",
@@ -12,7 +12,9 @@ json
   "dependencies": {
     "next": "15.5.6",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
